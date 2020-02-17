@@ -29,11 +29,11 @@ type Abc = 'a' | 'b' | 'c';
 
 const a1: Abc = a;
 
-const b1: Abc = b;
+const b1: Abc = b; // error!
 
-const c1: Abc = c.prop;
+const c1: Abc = c.prop; // error!
 
-const d1: Abc = D.prop;
+const d1: Abc = D.prop; // error!
 ```
 
 会发现除了 `a1` 这一句赋值语句外，其他的赋值语句都报错了！
