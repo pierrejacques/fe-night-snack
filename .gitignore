@@ -1,3 +1,5 @@
+node_modules/
+
 *.png
-*.jpeg
 *.jpg
+*.jpeg

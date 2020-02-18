@@ -1,0 +1,10 @@
+{
+  "name": "fe-night-snack",
+  "version": "1.0.0",
+  "description": "the repository for fe-night-snack",
+  "main": "''",
+  "repository": "git@github.com:pierrejacques/fe-night-snack.git",
+  "author": "pierrejacques@126.com",
+  "license": "MIT",
+  "private": false
+}
