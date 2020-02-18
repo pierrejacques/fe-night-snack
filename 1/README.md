@@ -1,8 +1,6 @@
-# Typescript夜点心：自动类型推断的策略
+# Typescript夜点心：类型推断的策略
 
-> 来搞点夜点心778！这是「前端夜点心」的第一篇文章
-
-今天的夜点心是关于 Typescript 的自动类型推断策略的。
+今天的夜点心关于 Typescript 的类型推断策略
 
 熟悉 Typescript 的朋友都知道，TS 具有一套类型推断系统来帮助减少不必要的类型声明。即使是面对纯 JS 代码，TS 也能通过类型推断系统给每个变量自动套上一个默认类型。
 
@@ -22,7 +20,7 @@ class D {
 }
 ```
 
-是不是看起来给人都差不多的感觉？那如果用他们给下面的变量赋值又会发生什么呢？
+看起来都差不多？如果用他们给下面的变量赋值又会发生什么呢？
 
 ``` ts
 type Abc = 'a' | 'b' | 'c';
@@ -64,3 +62,7 @@ const d2: Abc = D2.prop; // 这次不再报错了！
 ```
 
 通过 readonly 关键字的添加，标定了 `prop` 字段是不可更改的，从而触发了更严格的推断策略，让 `D.prop` 被推断成了单值类型 `'a'`
+
+## 扩展阅读
+
+> [Improved Inference for Literal Types in TypeScript](https://mariusschulz.com/blog/improved-inference-for-literal-types-in-typescript)
