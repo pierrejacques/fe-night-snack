@@ -11,4 +11,4 @@
 - 在根目录下创建一个名为 `x` 的目录
 - 在该目录下创建一个名为 `README.md` 的 markdown 文件撰写你的文章
 - 如果有示例（推荐），在同级目录创建一个名为 `index.ts` 的文件（视情况也可以是 .js, .css 或其他命名）
-- `commit` 你的分支，并提交 pull requeest
+- `commit` 你的分支，并提交 pull request
