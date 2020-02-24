@@ -3,4 +3,6 @@ node_modules/
 *.png
 *.jpg
 *.jpeg
+!**/assets/*.jpg
+
 yarn.lock

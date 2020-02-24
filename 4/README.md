@@ -119,3 +119,7 @@ export function isBatman (man: any): man is Batman {
 在项目中合理地使用类型守卫和自定义守卫，可以帮助我们减少很多不必要的类型断言，同时改善代码的可读性。
 
 最后一个问题，除了蝙蝠侠，你还能想到别的满足有头盔有斗篷有内裤有皮带超级英雄吗？
+
+## 扩展阅读
+
+[Type Guard - Typescript Deep Dive](https://basarat.gitbook.io/typescript/type-system/typeguard)
