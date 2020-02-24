@@ -4,7 +4,7 @@
 
 ## 什么是类型守卫
 
-TS 在遇到下面这些的条件语句时，会在语句的块级作用域内「收紧」变量的类型，这种类型推断的行为称作类型守卫 (Type Guard)。
+TS 在遇到以下这些条件语句时，会在语句的块级作用域内「收紧」变量的类型，这种类型推断的行为称作类型守卫 (Type Guard)。
 
 - 类型判断：`typeof`
 - 实例判断：`instanceof`
@@ -71,12 +71,12 @@ function test(input: Foo) {
   if (input != 'unknown') {
     // 这里 input 的类型「收紧」为 'foo' | 'bar'
   } else {
-    // 这里 input 的类型「收紧」为 'unknwon
+    // 这里 input 的类型「收紧」为 'unknown'
   }
 }
 ```
 
-上述的「紧缩」作用所带来的便利性，你很可能已经在开发中受惠过很多次了，只是不知道该怎么称呼它。不过值得注意的是，一旦上述条件不是直接通过字面量书写，而是通过一个条件函数来替代时，类型守卫便失效了，如下面的 `isString` 函数：
+上述的「收紧」作用所带来的便利性，你很可能已经在开发中受惠过很多次了，只是不知道该怎么称呼它。值得注意的是，一旦上述条件不是直接通过字面量书写，而是通过一个条件函数来替代时，类型守卫便失效了，如下面的 `isString` 函数：
 
 ``` ts
 function isString (input: any) {
@@ -109,16 +109,30 @@ function betterIsString (input: any): input is string { // 返回类型改为了
 由于自定义守卫的本质是一种「类型断言」，因而在自定义守卫函数中，你可以通过任何逻辑来实现对类型的判断，不需要受限于前面的 4 种条件语句。比如如下的“鸭子”类型守卫函数认为只要一个对象满足有头盔有斗篷有内裤有皮带，它就一定是“蝙蝠侠”的实例：
 
 ``` ts
-class Batman {}
+class SuperHero { // 超级英雄
+  readonly name: string;
+}
+class Batman extends SuperHero { // 蝙蝠侠继承自超级英雄
+  private muchMoney: true; // 私有很多钱
+}
 
-export function isBatman (man: any): man is Batman {
+// 判断任意对象是不是蝙蝠侠的函数
+function isBatman (man: any): man is Batman {
   return man && man.helmet && man.underwear && man.belt && man.cloak;
+}
+
+function foo (hero: SuperHero) {
+  if (isBatman(hero)) {
+    // hero 是蝙蝠侠
+  } else {
+    // hero 是别的超级英雄
+  }
 }
 ```
 
 在项目中合理地使用类型守卫和自定义守卫，可以帮助我们减少很多不必要的类型断言，同时改善代码的可读性。
 
-最后一个问题，除了蝙蝠侠，你还能想到别的满足有头盔有斗篷有内裤有皮带超级英雄吗？
+最后一个问题：除了蝙蝠侠，你还能想到别的满足有头盔有斗篷有内裤有皮带超级英雄吗？
 
 ## 扩展阅读
 

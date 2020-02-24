@@ -24,8 +24,22 @@ function test (input: string | number) {
   }
 }
 
-class Batman {}
+class SuperHero { // 超级英雄
+  readonly name: string;
+}
+class Batman extends SuperHero { // 蝙蝠侠继承自超级英雄
+  private muchMoney: true;
+}
 
+// 判断任意对象是不是蝙蝠侠的函数
 export function isBatman (man: any): man is Batman {
   return man && man.helmet && man.underwear && man.belt && man.cloak;
+}
+
+function foo (hero: SuperHero) {
+  if (isBatman(hero)) {
+    // hero 是蝙蝠侠
+  } else {
+    // hero 是别的超级英雄
+  }
 }
