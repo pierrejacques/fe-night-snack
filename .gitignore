@@ -1,8 +1,7 @@
 node_modules/
+yarn.lock
 
 *.png
 *.jpg
 *.jpeg
-!**/assets/*.jpg
-
-yarn.lock
+!**/assets/*

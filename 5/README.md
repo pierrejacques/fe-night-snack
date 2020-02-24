@@ -12,7 +12,9 @@
 
 在 Fitt 的基础上，学者还归纳出了触达时间关于目标大小和距离的公式：
 
-> $ MT = a + b\dot \log_{2}{\frac{2D}{W}} $
+> $ \text{MT} = a + b\cdot\log_{2}{\frac{2D}{W}} $
+
+![image 5-0](./assets/5-0.png)
 
 其中 MT (movement time) 是平均移动时长，a 和 b 是视场景而定的常量，D 是目标相对始发位置的距离，W 是目标的大小。
 
