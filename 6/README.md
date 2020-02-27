@@ -51,7 +51,7 @@ mf::Number -> Maybe Number
 mg::Number -> Maybe Number
 ```
 
-于此同时我们希望由他们组合得到的 `h1` 函数也具有相同的输入输入出类型：
+于此同时我们希望由他们组合得到的 `mh` 函数也具有相同的输入输入出类型：
 
 ``` hs
 mh::Number -> Maybe Number
