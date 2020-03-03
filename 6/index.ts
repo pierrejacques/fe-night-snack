@@ -8,7 +8,7 @@
  * 采用的是一种不定义 Just 和 Nothing 构造器的定义方法
  * 这种方式对 ES 而言更简单自然
  */
-class Maybe<T> {
+export class Maybe<T> {
   private value: T;
 
   static of<T>(x: T) {
@@ -45,7 +45,7 @@ class Maybe<T> {
  * 这里通过 Either 例举了具有两个构造器的 Maybe 的情况
  * 注意，这个 Either 不是一个 Monad，它只是一个 Functor
  */
-class Either<T> {
+export class Either<T> {
   static of<T>(x: T) {
     return x == null ? new Left(x as null) : new Right(x);
   }
