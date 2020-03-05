@@ -1,31 +1,32 @@
-function compose<T, U> (f: (x: T) => U, g: () => T) {
+function compose<T, U>(f: (x: T) => U, g: () => T) {
   return () => f(g());
 }
 
+function join<T>(io: IO<T>): () => T {
+  return io.effect;
+}
+
 export class IO<T> {
-  private value: () => T;
+  effect: () => T;
 
   of<T>(x: T) {
     return new IO(() => x);
   }
 
-  constructor(value: () => T) {
-    this.value = value;
+  constructor(effect: () => T) {
+    this.effect = effect;
   }
 
   map<U>(f: (x: T) => U) {
-    return new IO(compose(f, this.value));
-  }
-
-  join() {
-    return this.value; // FIXME:
+    return new IO(compose(f, this.effect));
   }
 
   chain<U>(f: (x: T) => IO<U>) {
-    return this.map(f).join();
+    const g = compose(f, this.effect);
+    return new IO(compose(join, g));
   }
 
   fork(callback: (x: T) => void) {
-    callback(this.value());
+    callback(this.effect());
   }
 }
