@@ -7,11 +7,11 @@ function join<T>(io: IO<T>): () => T {
 }
 
 export class IO<T> {
-  effect: () => T;
-
-  of<T>(x: T) {
+  static of<T>(x: T) {
     return new IO(() => x);
   }
+
+  effect: () => T;
 
   constructor(effect: () => T) {
     this.effect = effect;
