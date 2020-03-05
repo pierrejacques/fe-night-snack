@@ -1,64 +1,47 @@
-import { Maybe } from '../6';
+import { IO } from './io';
 
-const compose = <I, O>(f: (x: I) => O, g: () => I) => () => f(g());
-
-const map = <T, U>(f: (x: T) => U) => (context: Maybe<T>) => context.map(f);
-
-const chain = <T, U>(f: (x: T) => Maybe<U>) => (context: Maybe<T>) => context.chain(f);
-
-const tryCatch = <I, O>(f: (x: I) => O) => (x: I): Maybe<O> => {
+export function showReview() {
   try {
-    return Maybe.of(f(x));
-  } catch {
-    return Maybe.of(null);
+    const dataStr = localStorage.getItem('前端夜点心的数据');
+    const data = JSON.parse(dataStr);
+    const reviewData = data.review;
+    const reviewOutput = reviewData.map(
+      (count, index) => `第${index}篇文章的阅读量是${count}`
+    ).join(',');
+    console.log(reviewOutput);
+  } catch(e) {
+    console.log('读取错误');
   }
 }
 
-export class Task<T> {
-  static of<T>(x: T) {
-    return new Task(() => x);
-  }
+const readFromStorage = () => localStorage.getItem('前端夜点心的阅读量');
+const writeToConsole = content => console.log(content);
 
-  private value: () => T;
+// 解析 JSON
+const parseJSON = string => JSON.parse(string);
 
-  constructor(value: () => T) {
-    this.value = value;
-  }
+// 读取 review 字段
+const getReviewProp = data => data.review;
 
-  map<U>(f: (x: T) => U) {
-    return new Task(compose(f, this.value))
-  }
+// 把 review 字段拼装成字符串
+const mapReview = reviewData => reviewData.map(
+  (count, index) => `第${index}篇文章的阅读量是${count}`
+).join(',');
 
-  call() {
-    this.value();
-  }
-}
+const storageIO = new IO(readFromStorage);
 
-export class TaskMaybe<T> {
-  static of<T>(x: T) {
-    return new TaskMaybe(() => Maybe.of(x));
-  }
+// 组合上面的这些函数，得到新的 Monad
+export const task = storageIO
+  .map(parseJSON)
+  .map(getReviewProp)
+  .map(mapReview)
 
-  private value: () => Maybe<T>;
+task.fork(writeToConsole)
 
-  constructor(value: () => Maybe<T>) {
-    this.value = value;
-  }
+const readByKey = key => new IO(() => localStorage.getItem(key));
 
-  map<U>(f: (x: T) => U) {
-    return new TaskMaybe(compose(map(f), this.value));
-  }
-
-  chain<U>(f: (x: T) => Maybe<U>) {
-    return new TaskMaybe(compose(chain(f), this.value));
-  }
-
-  call() {
-    this.value();
-  }
-}
-
-const parse = tryCatch(JSON.parse);
-const prop = (name: string) => tryCatch((x: any) => x[name]);
-
-TaskMaybe.of(localStorage).chain(prop('studentId')).chain(parse).chain(prop('a'))
+export const task2 = readByKey('firstKey') // 通过第一个 key 读取存储
+  .map(parseJSON)
+  .map(v => v.key) // 获取第二个 key
+  .chain(readByKey) // 通过第二个 key 读取存储
+  .map(parseJSON)
