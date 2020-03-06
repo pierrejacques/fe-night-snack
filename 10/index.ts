@@ -18,7 +18,7 @@ const readFromStorage = () => localStorage.getItem('前端夜点心的阅读量'
 const writeToConsole = content => console.log(content);
 
 // 解析 JSON
-const parseJSON = string => JSON.parse(string);
+const parseJSON = x => JSON.parse(x);
 
 // 读取 review 字段
 const getReviewProp = data => data.review;
