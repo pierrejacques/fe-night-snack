@@ -22,6 +22,7 @@
 同样的，在类似的场景下：获取 cookie、localstorage 等本地化数据，混合应用通过 JSbridge 获取 native 数据，在调用时也会面临同样的问题。
 
 想象一下，你接手了一个年代久远的前端工程，里面 ajax 函数漫天飞，或串行或并行；里面数据缓存塞在各种不同的地方，有 cookie、有 localstorage、还有 IndexedDB… 然后你的产品经理异常强势，每次需求都很紧急，经常用各种理由逼迫你快速修改后上线。你会不会感到压力山大？
+
 随着时间的推移，你的工作技能也在不断精进，一年前你最满意的前端代码，现在看感觉不堪入目了。同时你维护了很多前端工程，这些工程里的数据获取相关函数，在不同的前端工程中都会存在，而且差异都不大。这时有三条路摆在你面前：
 
 - 花时间把全部代码统一，然后过几月或一年再进行统一；
@@ -53,6 +54,7 @@ interface userinfo {
     age: number;
     phone: number;
 }
+
 interface userId {
     Id: number;
 }
@@ -62,9 +64,9 @@ interface userId {
 
 ``` ts
 type getAjax = {
-    '/api/userinfo/serch/‘: {
-        request: userId,
-        respinse: userinfo,
+    '/api/userinfo/serch/': {
+        request: userId;
+        respinse: userinfo;
     }
 }
 ```
