@@ -48,3 +48,4 @@ function consumeNightSnack({ property }: NightSnack) {
     console.log('是热的');
   }
 }
+
