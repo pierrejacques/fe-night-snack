@@ -1,18 +1,18 @@
 import React from 'react';
 
 export const ValidatableInput = ({ value, placeholder, alert, onChange, onValidate }) => {
-  let inputClassName = 'c-input-with-alert__input'
+  let inputClassName = 'validatable-input__input'
 
   if (alert) {
-    inputClassName += ' c-input-with-alert__input--alert'
+    inputClassName += ' validatable-input__input--alert'
   }
 
   const alertElement = alert ? (
-    <p className="c-input-with-alert__alert" >{alert}</p>
+    <p className="validatable-input__alert" >{alert}</p>
   ) : null
 
   return (
-    <div className="c-input-with-alert">
+    <div className="validatable-input">
       <Input
         className={inputClassName}
         placeholder={placeholder}
