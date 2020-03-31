@@ -45,7 +45,7 @@
 比如下面这段脚本，通过 jest 的 timer mock 能力，实现了对 `expire` 函数的测试：
 
 ``` js
-const expire = (callback) => setTimeout(callback, 60000); // 一小时以后过期
+const expire = (callback) => setTimeout(callback, 60000); // 一分钟以后过期
 
 test('到点就调用回调', () => {
   const callback = jest.fn();
@@ -59,7 +59,7 @@ test('到点就调用回调', () => {
 })
 ```
 
-这段代码通过 `jest.advanceTimersByTime` 精确模拟了宏任务的运行过程，同步完成了原本需要一小时才能验证一次的异步流程的测试。
+这段代码通过 `jest.advanceTimersByTime` 精确模拟了宏任务的运行过程，同步完成了原本需要一分钟才能验证一次的异步流程的测试。
 
 又比如下面的测试脚本用来测试一个名为 `catchFromURL` 的工具函数，该函数可以从当前的 URL 中获取制定的参数作为返回值返回，同时从 URL 中抹去该参数。
 
