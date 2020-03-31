@@ -1,12 +1,12 @@
-# Typescript 夜点心：修饰器
+# TypeScript 夜点心：修饰器
 
-今天的夜点心我们来聊聊 Typescript 中的修饰器
+今天的夜点心我们来聊聊 TypeScript 中的修饰器
 
 开发中我们会遇到一类逻辑，他们与特定的类没有耦合关系，甚至与特定的接口（interface）也没有耦合关系。我们可以把他们抽离出来，并通过某种语法再添回到特定的属性和方法上去，实现逻辑的解耦和复用，这便是修饰器。
 
-在基于 Typescript 开发的库中时常能见到修饰器的身影（也有一部分 JS 库使用 @babel/plugin-proposal-decorators 来支持修饰器）：比如 Angular 中大量利用修饰器的语法来标记组件的生命周期、属性的性质，Mobx 利用修饰器来为组件挂载外部状态等。
+在基于 TypeScript 开发的库中时常能见到修饰器的身影（也有一部分 JS 库使用 @babel/plugin-proposal-decorators 来支持修饰器）：比如 Angular 中大量利用修饰器的语法来标记组件的生命周期、属性的性质，Mobx 利用修饰器来为组件挂载外部状态等。
 
-要使用修饰器首先需要将 tsconfig.json 中的 `compileOptions.experimentalDecorators` 字段设为 `true`。Typescript 中的修饰器可以用在以下 5 种场景中：
+要使用修饰器首先需要将 tsconfig.json 中的 `compileOptions.experimentalDecorators` 字段设为 `true`。TypeScript 中的修饰器可以用在以下 5 种场景中：
 
 - 类
 - 属性

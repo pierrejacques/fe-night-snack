@@ -97,7 +97,7 @@ true && (false ?? 'foo'); // 'foo'
 - @babel/plugin-proposal-optional-chaining
 - @babel/plugin-proposal-nullish-coalescing-operator
 
-Typescript 也从 3.7 开始支持这两个特性。
+TypeScript 也从 3.7 开始支持这两个特性。
 
 所以只要使用合理的转码工具，还是可以通过它们来简化我们的源码的。
 

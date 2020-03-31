@@ -1,8 +1,8 @@
-# Typescript 夜点心：常量断言
+# TypeScript 夜点心：常量断言
 
 今天的夜点心我们来谈谈 TS 中的常量断言
 
-常量断言（语法写作 `as const`）是 Typescript 3.4 （现在的最新版本是 3.8.3）发布的新特性中最实用的一个，在我们的第一篇夜点心 [Typescript夜点心：类型推断的策](../1/README.md) 中我们就介绍过，TS 会区别对待可修改和不可修改的值的类型推断：
+常量断言（语法写作 `as const`）是 TypeScript 3.4 （现在的最新版本是 3.8.3）发布的新特性中最实用的一个，在我们的第一篇夜点心 [Typescript夜点心：类型推断的策](../1/README.md) 中我们就介绍过，TS 会区别对待可修改和不可修改的值的类型推断：
 
 例如下面的 `immutableString` 会被推断成单值类型 `'Acid Mother Temple'`
 而 `mutableString` 则会被推断成通用的 `string` 类型

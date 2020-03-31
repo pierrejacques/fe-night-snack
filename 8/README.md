@@ -1,4 +1,4 @@
-# Typescript 夜点心：条件范型
+# TypeScript 夜点心：条件范型
 
 今天的夜点心来谈一谈怎么写 TS 中的条件范型
 
@@ -22,7 +22,7 @@ function promisify<T> (input: T) {
 
 上面的实现通过范型 `T`，声明了入参 `input` 的类型。而Typescript 通过自己的类型推导，只能得出 `promisify` 的返回类型是 `(T & Promise<any>) | Promise<T>` ，并不能像我们的函数逻辑那样，知道应该在 T 是 Promise 的时候返回 T 类型，否则返回 `Promise<T>` 类型。这样类型的定义与函数的逻辑没有匹配上，会使得 `promisify` 函数变得很难用：我们不得不每次都手动断言它的返回类型，繁琐且易错。
 
-为了让 Typescript 能够根据入参的类型自动判断出出参的类型，我们需要用到条件范型：
+为了让 TypeScript 能够根据入参的类型自动判断出出参的类型，我们需要用到条件范型：
 
 ## 条件范型
 

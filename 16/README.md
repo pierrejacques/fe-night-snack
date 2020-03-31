@@ -1,12 +1,12 @@
-# Typescript 夜点心：基于位运算的枚举类型
+# TypeScript 夜点心：基于位运算的枚举类型
 
-今天的夜点心来介绍 Typescript 中枚举值的一种特别的用法——基于位运算的枚举型
+今天的夜点心来介绍 TypeScript 中枚举值的一种特别的用法——基于位运算的枚举型
 
 首先要提出一个问题：「TS 中一个枚举类型的值只能取自声明的枚举值中的一个吗？」
 
 看起来有点绕，但是看懂了以后你可能会觉得这是句屁话——枚举枚举，顾名思义，当然只能取枚举出来的值了
 
-有意思的是，在 Typescript 中这还真不一定成立：通过基于位掩码（bitmask）的枚举定义，一个枚举类型的值可以取到远多余枚举声明的值
+有意思的是，在 TypeScript 中这还真不一定成立：通过基于位掩码（bitmask）的枚举定义，一个枚举类型的值可以取到远多余枚举声明的值
 
 ## 位掩码枚举值
 
@@ -118,4 +118,4 @@ function consumeNightSnack({ property }: NightSnack) {
 
 ## 扩展阅读
 
-- [Typescript Deep Dive - enums](https://basarat.gitbook.io/typescript/type-system/enums)
+- [TypeScript Deep Dive - enums](https://basarat.gitbook.io/typescript/type-system/enums)

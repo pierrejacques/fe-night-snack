@@ -1,6 +1,6 @@
-# Typescript 夜点心：自定义类型守卫
+# TypeScript 夜点心：自定义类型守卫
 
-今天的夜点心关于 Typescript 中的自定义类型守卫
+今天的夜点心关于 TypeScript 中的自定义类型守卫
 
 ## 什么是类型守卫
 
@@ -136,4 +136,4 @@ function foo (hero: SuperHero) {
 
 ## 扩展阅读
 
-[Type Guard - Typescript Deep Dive](https://basarat.gitbook.io/typescript/type-system/typeguard)
+[Type Guard - TypeScript Deep Dive](https://basarat.gitbook.io/typescript/type-system/typeguard)
