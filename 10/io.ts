@@ -3,7 +3,7 @@ function compose<T, U>(f: (x: T) => U, g: () => T) {
 }
 
 function join<T>(io: IO<T>): () => T {
-  return io.effect;
+  return io.effect();
 }
 
 export class IO<T> {
